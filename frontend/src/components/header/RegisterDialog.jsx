@@ -11,9 +11,9 @@ const RegisterDialog = ({ showRegister, setShowRegister, setCurrentUser }) => {
   const hideRegister = () => setShowRegister(false);
   const areInputsValid = () => formEmail && formPassword;
 
-  const buttonPressed = (signUp) => {
+  const buttonPressed = (isSignUp) => {
     if (areInputsValid()) {
-      console.log(signUp ? "Signup:" : "Login:");
+      console.log(isSignUp ? "Signup:" : "Login:");
       console.log(`Attempt: ${formEmail} with ${formPassword}`);
     } else {
       alert("Both username and password are required");
