@@ -1,16 +1,32 @@
 import React from "react";
 import { useState } from "react";
 import Button from "react-bootstrap/Button";
+import Cart from "./Cart";
 import RegisterDialog from "./RegisterDialog";
 
 const User = ({ currentUser, setCurrentUser }) => {
+  const [showCart, setShowCart] = useState(false);
   const [showRegister, setShowRegister] = useState(false);
 
   const showDialog = () => setShowRegister(true);
 
   if (currentUser.isLoggedIn) {
-    // temporary until we sort out user state
-    return <h3>{currentUser.email}</h3>;
+    return (
+      <>
+        <h3>{currentUser.email}</h3>
+
+        <Button
+          variant="info"
+          onClick={() => {
+            setShowCart(true);
+          }}
+        >
+          Cart
+        </Button>
+
+        <Cart showCart={showCart} setShowCart={setShowCart} />
+      </>
+    );
   } else {
     return (
       <>

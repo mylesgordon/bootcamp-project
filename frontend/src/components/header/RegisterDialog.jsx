@@ -13,6 +13,7 @@ const RegisterDialog = ({ showRegister, setShowRegister, setCurrentUser }) => {
 
   const buttonPressed = (isSignUp) => {
     if (areInputsValid()) {
+      setCurrentUser({ isLoggedIn: true, email: formEmail });
       console.log(isSignUp ? "Signup:" : "Login:");
       console.log(`Attempt: ${formEmail} with ${formPassword}`);
     } else {
