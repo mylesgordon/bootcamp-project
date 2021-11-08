@@ -135,7 +135,6 @@ app //creating the PUT method for updating an item in the items database.
   });
 //
 
-
 // creating the HTTP methods for User
 app //creating the POST method for creating a new User and adding them to the users database.
   .post("/api/users", async (req, res) => {
