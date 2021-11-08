@@ -5,9 +5,21 @@ import Modal from "react-bootstrap/Modal";
 import RegisterForm from "./RegisterForm";
 
 const RegisterDialog = ({ showRegister, setShowRegister, setCurrentUser }) => {
-  const hideRegister = () => setShowRegister(false);
   const [formEmail, setFormEmail] = useState("");
   const [formPassword, setFormPassword] = useState("");
+
+  const hideRegister = () => setShowRegister(false);
+  const areInputsValid = () => formEmail && formPassword;
+
+  const buttonPressed = (signUp) => {
+    if (!areInputsValid()) {
+      alert("Both username and password are required");
+      return;
+    } else {
+      console.log(signUp ? "Signup:" : "Login:");
+      console.log(`Attempt: ${formEmail} with ${formPassword}`);
+    }
+  };
 
   return (
     <Modal show={showRegister} onHide={hideRegister}>
@@ -29,20 +41,10 @@ const RegisterDialog = ({ showRegister, setShowRegister, setCurrentUser }) => {
           Close
         </Button>
         <ButtonGroup>
-          <Button
-            variant="success"
-            onClick={() =>
-              console.log(`Log in attempt: ${formEmail} with ${formPassword}`)
-            }
-          >
+          <Button variant="success" onClick={() => buttonPressed(false)}>
             Log In
           </Button>
-          <Button
-            variant="danger"
-            onClick={() =>
-              console.log(`Sign up attempt: ${formEmail} with ${formPassword}`)
-            }
-          >
+          <Button variant="danger" onClick={() => buttonPressed(true)}>
             Sign Up
           </Button>
         </ButtonGroup>
