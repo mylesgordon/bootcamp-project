@@ -1,0 +1,14 @@
+import "bootstrap/dist/css/bootstrap.min.css";
+import {useParams} from "react-router-dom";
+
+function Category() {
+    const { id } = useParams();
+  return (
+    <main>
+      <h2>Categories Test</h2>
+        <h3>Selected category {id}</h3>
+    </main>
+  );
+}
+
+export default Category;
