@@ -68,4 +68,4 @@ const itemModel = {
 
 const cartItemModel = {};
 
-module.exports = { userModel, categoryModel, itemModel, cartModel };
+module.exports = { userModel, categoryModel, itemModel, cartItemModel };

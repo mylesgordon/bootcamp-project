@@ -20,8 +20,8 @@ const CartItem = connection.define("Cart Item", cartItemModel);
 
 Item.belongsTo(Category);
 Category.hasMany(Item);
-CartItem.BelongsTo(User);
+CartItem.belongsTo(User);
 CartItem.belongsTo(Item);
 User.hasMany(CartItem);
 
-module.exports = { connection, User, Item, Category };
+module.exports = { connection, User, Item, Category, CartItem };
