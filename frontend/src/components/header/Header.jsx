@@ -4,7 +4,21 @@ import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { Link } from "react-router-dom";
 
+import React, { useEffect, useState } from "react";
+=======
+
 import User from "./User";
+
+const fetchCategories = () => {
+  return fetch("http://localhost:3002/api/categories", {
+    method: "GET",
+  })
+    .then((response) => response.json())
+    .then((data) => console.log(data))
+    .catch((error) => console.error(error));
+};
+
+const [categories, setCategory] = useState([]);
 
 const Header = ({ currentUser, setCurrentUser }) => {
   return (
