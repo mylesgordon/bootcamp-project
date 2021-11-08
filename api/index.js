@@ -1,5 +1,11 @@
 const Sequelize = require("sequelize");
-const { connection, User, Item, Category } = require("./sequelize-connect");
+const {
+  connection,
+  User,
+  Item,
+  Category,
+  Cart,
+} = require("./sequelize-connect");
 const express = require("express");
 const app = express();
 const port = 3002; //https://localhost:3002/
