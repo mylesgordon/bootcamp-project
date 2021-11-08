@@ -1,17 +1,16 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useState } from "react";
-import Header from "./components/header/Header";
-import { Route, IndexRoute } from "react-router";
+import Header from "../components/header/Header";
 
-function App() {
+function Categories() {
   const [currentUser, setCurrentUser] = useState({ isLoggedIn: false });
 
   return (
-    <div className="App">
+    <main>
       <Header currentUser={currentUser} setCurrentUser={setCurrentUser} />
-      <h1>Hello World!</h1>
-    </div>
+      <h2>Categories Test</h2>
+    </main>
   );
 }
 
-export default App;
+export default Categories;
