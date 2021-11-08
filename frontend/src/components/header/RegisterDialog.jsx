@@ -2,8 +2,9 @@ import Button from "react-bootstrap/Button";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
 import Modal from "react-bootstrap/Modal";
 
-const RegisterDialog = ({ showRegister, setShowRegister }) => {
+const RegisterDialog = ({ showRegister, setShowRegister, setCurrentUser }) => {
   const hideRegister = () => {
+    setCurrentUser({ isLoggedIn: true, email: "poo" });
     setShowRegister(false);
   };
 

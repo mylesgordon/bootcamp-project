@@ -1,10 +1,13 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import Header from "./components/Header";
+import { useState } from "react";
+import Header from "./components/header/Header";
 
 function App() {
+  const [currentUser, setCurrentUser] = useState({ isLoggedIn: false });
+
   return (
     <div className="App">
-      <Header />
+      <Header currentUser={currentUser} setCurrentUser={setCurrentUser} />
     </div>
   );
 }

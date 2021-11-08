@@ -1,18 +1,11 @@
-import { useState } from "react";
-
-import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 
-import RegisterDialog from "./RegisterDialog";
+import User from "./User";
 
-const Header = () => {
-  const [showRegister, setShowRegister] = useState(false);
-
-  const showDialog = () => setShowRegister(true);
-
+const Header = ({ currentUser, setCurrentUser }) => {
   return (
     <Navbar bg="light" expand="lg">
       <Container>
@@ -27,14 +20,7 @@ const Header = () => {
             </NavDropdown>
           </Nav>
           <Nav>
-            <Button variant="danger" onClick={showDialog}>
-              Sign Up
-            </Button>
-
-            <RegisterDialog
-              showRegister={showRegister}
-              setShowRegister={setShowRegister}
-            />
+            <User currentUser={currentUser} setCurrentUser={setCurrentUser} />
           </Nav>
         </Navbar.Collapse>
       </Container>
