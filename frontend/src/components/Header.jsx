@@ -27,7 +27,7 @@ const Header = () => {
             </NavDropdown>
           </Nav>
           <Nav>
-            <Button variant="info" onClick={showDialog}>
+            <Button variant="danger" onClick={showDialog}>
               Sign Up
             </Button>
 

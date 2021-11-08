@@ -1,4 +1,5 @@
 import Button from "react-bootstrap/Button";
+import ButtonGroup from "react-bootstrap/ButtonGroup";
 import Modal from "react-bootstrap/Modal";
 
 const RegisterDialog = ({ showRegister, setShowRegister }) => {
@@ -18,12 +19,15 @@ const RegisterDialog = ({ showRegister, setShowRegister }) => {
         <Button variant="secondary" onClick={hideRegister}>
           Close
         </Button>
-        <Button variant="primary" onClick={hideRegister}>
-          Log In
-        </Button>
-        <Button variant="primary" onClick={hideRegister}>
-          Sign Up
-        </Button>
+
+        <ButtonGroup>
+          <Button variant="success" onClick={hideRegister}>
+            Log In
+          </Button>
+          <Button variant="danger" onClick={hideRegister}>
+            Sign Up
+          </Button>
+        </ButtonGroup>
       </Modal.Footer>
     </Modal>
   );
