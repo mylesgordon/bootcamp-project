@@ -145,19 +145,6 @@ app //creating the POST method for creating a new User and adding them to the us
       res.status(400).send(e.message);
     }
   })
-  //creating the GET method for retrieving a specific User.
-  .get("/api/users/:id", async (req, res) => {
-    try {
-      const user = await User.findOne({
-        where: {
-          id: req.params.id,
-        },
-      });
-      res.status(200).send(user);
-    } catch (e) {
-      res.status(400).send(e.message);
-    }
-  })
   //creating the  PUT method for updating a User in the database.
   .put("/api/users/:id", async (req, res) => {
     try {
@@ -233,12 +220,12 @@ app //creating the POST method for creating a new User and adding them to the us
       res.status(400).send(e.message);
     }
   })
-  //creating the GET method for retrieving a specific User.
-  .get("/api/users/:id", async (req, res) => {
+  //creating the GET method to get a user by their email
+  .get("/api/users/:email", async (req, res) => {
     try {
       const user = await User.findOne({
         where: {
-          id: req.params.id,
+          email: req.params.email,
         },
       });
       res.status(200).send(user);

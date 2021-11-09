@@ -18,7 +18,7 @@ const User = ({
   if (currentUser.isLoggedIn) {
     return (
       <>
-        <h3>{currentUser.email}</h3>
+        <h3>{currentUser.user.email}</h3>
 
         <Button
           variant="info"
@@ -47,6 +47,7 @@ const User = ({
         <RegisterDialog
           showRegister={showRegister}
           setShowRegister={setShowRegister}
+          currentUser={currentUser}
           setCurrentUser={setCurrentUser}
         />
       </>

@@ -8,7 +8,10 @@ import Category from "./Routes/Category";
 import NotFound from "./Routes/NotFound";
 
 function App() {
-  const [currentUser, setCurrentUser] = useState({ isLoggedIn: false });
+  const [currentUser, setCurrentUser] = useState({
+    isLoggedIn: false,
+    user: {},
+  });
   const [shoppingCart, setShoppingCart] = useState([]);
 
   return (
