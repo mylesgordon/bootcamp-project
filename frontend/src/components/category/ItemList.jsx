@@ -19,18 +19,15 @@ const ItemList = ({ id, currentUser, shoppingCart, setShoppingCart }) => {
     <div>
       <Container>
         <Row>
-          {
-            // FIXME: add item.id as a key
-            items.map((item) => (
-              <Item
-                item={item}
-                currentUser={currentUser}
-                shoppingCart={shoppingCart}
-                setShoppingCart={setShoppingCart}
-                key={item.id}
-              />
-            ))
-          }
+          {items.map((item) => (
+            <Item
+              item={item}
+              currentUser={currentUser}
+              shoppingCart={shoppingCart}
+              setShoppingCart={setShoppingCart}
+              key={item.id}
+            />
+          ))}
         </Row>
       </Container>
     </div>
