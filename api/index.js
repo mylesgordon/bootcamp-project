@@ -9,8 +9,8 @@ const {
 const express = require("express");
 const app = express();
 const port = 3002; //https://localhost:3002/
-//const cors = require('cors');
-//app.use(cors());
+const cors = require("cors");
+app.use(cors());
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
