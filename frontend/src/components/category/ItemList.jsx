@@ -3,17 +3,20 @@ import { Container, Row } from "react-bootstrap";
 import Item from "./Item";
 
 const ItemList = ({ id, currentUser, shoppingCart, setShoppingCart }) => {
+  const categoryId = id;
   const [items, setItems] = useState([]);
 
   useEffect(() => {
-    console.log(id);
+    console.log(categoryId);
     const fetchItems = async () => {
-      const items = await fetch(`http://localhost:3002/api/categories/${id}`);
+      const items = await fetch(
+        `http://localhost:3002/api/categories/${categoryId}`
+      );
       setItems(await items.json());
     };
 
     fetchItems();
-  }, []);
+  }, [categoryId]);
 
   return (
     <div>
