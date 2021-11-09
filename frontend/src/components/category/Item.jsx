@@ -1,7 +1,11 @@
 import React from "react";
 import { Button, Card, Col, ListGroup, ListGroupItem } from "react-bootstrap";
 
-const Item = ({ item }) => {
+const Item = ({ item, shoppingCart, setShoppingCart }) => {
+  const addToCart = () => {
+    setShoppingCart([...shoppingCart, item]);
+  };
+
   return (
     <Col md={4}>
       <Card>
@@ -21,7 +25,9 @@ const Item = ({ item }) => {
         </ListGroup>
 
         <Card.Body>
-          <Button variant="primary">Add to cart</Button>
+          <Button variant="primary" onClick={addToCart}>
+            Add to cart
+          </Button>
         </Card.Body>
       </Card>
     </Col>

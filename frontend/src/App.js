@@ -9,14 +9,29 @@ import NotFound from "./Routes/NotFound";
 
 function App() {
   const [currentUser, setCurrentUser] = useState({ isLoggedIn: false });
+  const [shoppingCart, setShoppingCart] = useState([]);
 
   return (
     <BrowserRouter>
       <div className="App">
-        <Header currentUser={currentUser} setCurrentUser={setCurrentUser} />
+        <Header
+          currentUser={currentUser}
+          setCurrentUser={setCurrentUser}
+          shoppingCart={shoppingCart}
+          setShoppingCart={setShoppingCart}
+        />
         <Routes>
           <Route path="/" exact element={<Home />} />
-          <Route path="/category/:id" exact element={<Category />} />
+          <Route
+            path="/category/:id"
+            exact
+            element={
+              <Category
+                shoppingCart={shoppingCart}
+                setShoppingCart={setShoppingCart}
+              />
+            }
+          />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </div>

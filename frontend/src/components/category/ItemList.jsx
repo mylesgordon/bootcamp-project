@@ -22,13 +22,17 @@ const testData = [
   },
 ];
 
-const ItemList = () => {
+const ItemList = ({ shoppingCart, setShoppingCart }) => {
   return (
     <div>
       <Container>
         <Row>
           {testData.map((item) => (
-            <Item item={item} />
+            <Item
+              item={item}
+              shoppingCart={shoppingCart}
+              setShoppingCart={setShoppingCart}
+            />
           ))}
         </Row>
       </Container>

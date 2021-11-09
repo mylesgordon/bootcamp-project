@@ -4,7 +4,12 @@ import Button from "react-bootstrap/Button";
 import Cart from "./Cart";
 import RegisterDialog from "./RegisterDialog";
 
-const User = ({ currentUser, setCurrentUser }) => {
+const User = ({
+  currentUser,
+  setCurrentUser,
+  shoppingCart,
+  setShoppingCart,
+}) => {
   const [showCart, setShowCart] = useState(false);
   const [showRegister, setShowRegister] = useState(false);
 
@@ -24,7 +29,12 @@ const User = ({ currentUser, setCurrentUser }) => {
           Cart
         </Button>
 
-        <Cart showCart={showCart} setShowCart={setShowCart} />
+        <Cart
+          showCart={showCart}
+          setShowCart={setShowCart}
+          shoppingCart={shoppingCart}
+          setShoppingCart={setShoppingCart}
+        />
       </>
     );
   } else {
