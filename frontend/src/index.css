@@ -4,6 +4,9 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-weight: bold;
+  background-color: white;
+  color: black;
 }
 
 code {
@@ -17,4 +20,10 @@ code {
   max-height: 100%;
   width: auto;
   height: auto;
+  display: flex;
+  align-items: center;
+  padding: 5px;
+}
+
+.App {
 }
