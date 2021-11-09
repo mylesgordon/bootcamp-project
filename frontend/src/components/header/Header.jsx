@@ -3,7 +3,7 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { Link } from "react-router-dom";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import User from "./User";
 
@@ -13,6 +13,17 @@ const Header = ({
   shoppingCart,
   setShoppingCart,
 }) => {
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      const apiResponse = await fetch("http://localhost:3002/api/categories");
+      setCategories(await apiResponse.json());
+    };
+
+    fetchCategories();
+  }, []);
+
   return (
     <Navbar bg="light" expand="lg">
       <Container>
@@ -33,12 +44,11 @@ const Header = ({
               Home
             </Nav.Link>
             <NavDropdown title="Categories" id="basic-nav-dropdown">
-              <NavDropdown.Item as={Link} to="/category/1">
-                Category 1
-              </NavDropdown.Item>
-              <NavDropdown.Item as={Link} to="/category/2">
-                Category 2
-              </NavDropdown.Item>
+              {categories.map((category) => (
+                <NavDropdown.Item as={Link} to={`/category/${category.id}`}>
+                  {category.name}
+                </NavDropdown.Item>
+              ))}
             </NavDropdown>
           </Nav>
           <Nav>
