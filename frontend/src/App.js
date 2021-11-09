@@ -27,6 +27,7 @@ function App() {
             exact
             element={
               <Category
+                currentUser={currentUser}
                 shoppingCart={shoppingCart}
                 setShoppingCart={setShoppingCart}
               />

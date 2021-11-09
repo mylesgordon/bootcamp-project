@@ -1,9 +1,13 @@
 import React from "react";
 import { Button, Card, Col, ListGroup, ListGroupItem } from "react-bootstrap";
 
-const Item = ({ item, shoppingCart, setShoppingCart }) => {
+const Item = ({ item, currentUser, shoppingCart, setShoppingCart }) => {
   const addToCart = () => {
-    setShoppingCart([...shoppingCart, item]);
+    if (currentUser.isLoggedIn) {
+      setShoppingCart([...shoppingCart, item]);
+    } else {
+      alert("You need to be logged in to add this item to your cart");
+    }
   };
 
   return (
