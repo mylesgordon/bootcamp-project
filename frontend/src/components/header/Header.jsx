@@ -47,7 +47,11 @@ const Header = ({
               {
                 // TODO: make this its own component
                 categories.map((category) => (
-                  <NavDropdown.Item as={Link} to={`/category/${category.id}`}>
+                  <NavDropdown.Item
+                    as={Link}
+                    to={`/category/${category.id}`}
+                    key={category.id}
+                  >
                     {category.name}
                   </NavDropdown.Item>
                 ))
