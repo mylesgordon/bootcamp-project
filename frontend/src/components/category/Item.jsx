@@ -25,7 +25,7 @@ const Item = ({ item, currentUser, shoppingCart, setShoppingCart }) => {
         </Card.Body>
 
         <ListGroup className="list-group-flush">
-          <ListGroupItem>Price: {item.price}</ListGroupItem>
+          <ListGroupItem>Price: £{item.price}</ListGroupItem>
         </ListGroup>
 
         <Card.Body>
