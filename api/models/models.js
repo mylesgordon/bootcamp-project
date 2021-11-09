@@ -9,6 +9,7 @@ const userModel = {
         msg: "Please enter a valid email name.",
       },
     },
+    unique: true,
   },
   password: {
     type: Sequelize.STRING,
@@ -72,7 +73,7 @@ const itemModel = {
         msg: "Please enter a valid image link",
       },
     },
-  }
+  },
 };
 
 const cartItemModel = {};
