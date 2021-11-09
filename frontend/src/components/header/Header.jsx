@@ -44,11 +44,14 @@ const Header = ({
               Home
             </Nav.Link>
             <NavDropdown title="Categories" id="basic-nav-dropdown">
-              {categories.map((category) => (
-                <NavDropdown.Item as={Link} to={`/category/${category.id}`}>
-                  {category.name}
-                </NavDropdown.Item>
-              ))}
+              {
+                // TODO: make this its own component
+                categories.map((category) => (
+                  <NavDropdown.Item as={Link} to={`/category/${category.id}`}>
+                    {category.name}
+                  </NavDropdown.Item>
+                ))
+              }
             </NavDropdown>
           </Nav>
           <Nav>
