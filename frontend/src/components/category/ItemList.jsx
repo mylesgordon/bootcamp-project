@@ -6,8 +6,9 @@ const ItemList = ({ id, currentUser, shoppingCart, setShoppingCart }) => {
   const [items, setItems] = useState([]);
 
   useEffect(() => {
+    console.log(id);
     const fetchItems = async () => {
-      const items = await fetch("http://localhost:3002/items");
+      const items = await fetch(`http://localhost:3002/api/categories/${id}`);
       setItems(await items.json());
     };
 
@@ -26,6 +27,7 @@ const ItemList = ({ id, currentUser, shoppingCart, setShoppingCart }) => {
                 currentUser={currentUser}
                 shoppingCart={shoppingCart}
                 setShoppingCart={setShoppingCart}
+                key={item.id}
               />
             ))
           }

@@ -20,7 +20,7 @@ const Item = ({ item, currentUser, shoppingCart, setShoppingCart }) => {
         />
 
         <Card.Body>
-          <Card.Title>{item.title}</Card.Title>
+          <Card.Title>{item.name}</Card.Title>
           <Card.Text>{item.description}</Card.Text>
         </Card.Body>
 
