@@ -39,16 +39,22 @@ const RegisterDialog = ({
     const userRequest = { email: formEmail, password: formPassword };
 
     if (areInputsValid()) {
-      if (isSignUp) {
-        createUser(userRequest).catch(() => {
-          alert("Could not create user. Please check your email and password.");
-          return;
-        });
-      }
+      try {
+        if (isSignUp) {
+          await createUser(userRequest);
+        }
 
-      const logInRequest = await logIn(userRequest);
-      const userJson = await logInRequest.json();
-      setCurrentUser({ isLoggedIn: true, user: userJson });
+        const logInRequest = await logIn(userRequest);
+        const userJson = await logInRequest.json();
+
+        if (userRequest.password !== userJson.password) {
+          throw new Error("Password did not match database");
+        }
+
+        setCurrentUser({ isLoggedIn: true, user: userJson });
+      } catch {
+        alert("Log in/sign up failed. Please check the username and password");
+      }
     } else {
       alert("Both username and password are required");
     }
