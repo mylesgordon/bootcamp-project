@@ -64,6 +64,15 @@ const itemModel = {
       },
     },
   },
+  description: {
+    type: Sequelize.STRING,
+    allowNull: false,
+    validate: {
+      notEmpty: {
+        msg: "Please enter a valid image link",
+      },
+    },
+  }
 };
 
 const cartItemModel = {};
