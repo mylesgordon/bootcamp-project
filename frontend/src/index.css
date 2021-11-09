@@ -6,7 +6,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
   font-weight: bold;
   background-color: white;
-  color: black;
 }
 
 code {
@@ -15,15 +14,10 @@ code {
 }
 
 .item-image {
-  object-fit: contain;
-  max-width: 150px;
+  height: auto;
   max-height: 100%;
   width: auto;
-  height: auto;
-  display: flex;
+  max-width: 150px;
   align-items: center;
-  padding: 5px;
-}
-
-.App {
+  justify-content: center;
 }
