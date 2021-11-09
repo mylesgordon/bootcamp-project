@@ -17,6 +17,14 @@ const Item = ({ item, currentUser, shoppingCart, setShoppingCart }) => {
     }
   };
 
+  const adminDeleteButton = () => {
+    if (currentUser.user.id === 1) {
+      return <Button variant="danger">Delete Item</Button>;
+    } else {
+      return <></>;
+    }
+  };
+
   return (
     <Col>
       <Card>
@@ -36,6 +44,8 @@ const Item = ({ item, currentUser, shoppingCart, setShoppingCart }) => {
         <Button variant="primary" onClick={addToCart}>
           Add to cart
         </Button>
+
+        {adminDeleteButton()}
       </Card>
     </Col>
   );
