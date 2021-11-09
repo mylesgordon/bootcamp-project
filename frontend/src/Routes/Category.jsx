@@ -9,6 +9,7 @@ function Category({ currentUser, shoppingCart, setShoppingCart }) {
       <h2>Categories Test</h2>
       <h3>Selected category {id}</h3>
       <ItemList
+        id={id}
         currentUser={currentUser}
         shoppingCart={shoppingCart}
         setShoppingCart={setShoppingCart}
