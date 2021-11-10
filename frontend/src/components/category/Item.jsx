@@ -56,9 +56,13 @@ const Item = ({
   };
 
   return (
-    <Col>
+    <Col md={4}>
       <Card>
-        <Card.Img variant="top" src={item.image} className="item-image" />
+        <Card.Img
+          variant="top"
+          src={item.image}
+          className="mx-auto item-image"
+        />
         <Card.Header>
           <Card.Title style={{ textAlign: "center" }}>{item.name}</Card.Title>
         </Card.Header>
