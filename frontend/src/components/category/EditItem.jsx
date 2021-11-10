@@ -4,7 +4,6 @@ import Modal from "react-bootstrap/Modal";
 import React, { useEffect, useState } from "react";
 
 const EditItem = ({ editDialog, setEditDialog, fetchItems }) => {
-  console.log(editDialog.item);
   const [updatedItem, setUpdatedItem] = useState(editDialog.item);
 
   useEffect(() => {
