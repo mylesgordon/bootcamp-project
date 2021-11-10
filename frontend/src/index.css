@@ -14,10 +14,14 @@ code {
 }
 
 .item-image {
-  height: auto;
-  max-height: 100%;
-  width: auto;
-  max-width: 150px;
+  width: 100%;
+  height: 20vw;
+  object-fit: cover;
+}
+
+.card {
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .adminCreate {
