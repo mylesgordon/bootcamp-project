@@ -5,6 +5,7 @@ import Item from "./Item";
 const ItemList = ({ id, currentUser, shoppingCart, setShoppingCart }) => {
   const categoryId = id;
   const [items, setItems] = useState([]);
+  const [showEditDialog, setShowEditDialog] = useState(false);
 
   const fetchItems = async () => {
     const items = await fetch(
@@ -27,6 +28,8 @@ const ItemList = ({ id, currentUser, shoppingCart, setShoppingCart }) => {
               currentUser={currentUser}
               shoppingCart={shoppingCart}
               setShoppingCart={setShoppingCart}
+              showEditDialog={showEditDialog}
+              setShowEditDialog={setShowEditDialog}
               fetchItems={fetchItems}
               key={item.id}
             />

@@ -7,12 +7,15 @@ import {
   ListGroup,
   ListGroupItem,
 } from "react-bootstrap";
+import EditItem from "./EditItem";
 
 const Item = ({
   item,
   currentUser,
   shoppingCart,
   setShoppingCart,
+  showEditDialog,
+  setShowEditDialog,
   fetchItems,
 }) => {
   const itemId = item.id;
@@ -32,12 +35,29 @@ const Item = ({
     fetchItems();
   };
 
-  const adminDeleteButton = () => {
+  const adminButtons = () => {
     if (currentUser.user.id === 1) {
       return (
-        <Button variant="danger" onClick={adminDeleteItem}>
-          Delete Item
-        </Button>
+        <div>
+          <Button variant="danger" onClick={adminDeleteItem}>
+            Delete Item
+          </Button>
+          <Button
+            variant="info"
+            onClick={() => {
+              setShowEditDialog(true);
+            }}
+          >
+            Edit Item
+          </Button>
+
+          <EditItem
+            item={item}
+            showEditDialog={showEditDialog}
+            setShowEditDialog={setShowEditDialog}
+            fetchItems={fetchItems}
+          />
+        </div>
       );
     } else {
       return <></>;
@@ -64,7 +84,7 @@ const Item = ({
           Add to cart
         </Button>
 
-        {adminDeleteButton()}
+        {adminButtons()}
       </Card>
     </Col>
   );
