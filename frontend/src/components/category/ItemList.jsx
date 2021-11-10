@@ -48,6 +48,7 @@ const ItemList = ({ id, currentUser, shoppingCart, setShoppingCart }) => {
               currentUser={currentUser}
               shoppingCart={shoppingCart}
               setShoppingCart={setShoppingCart}
+              setEditDialog={setEditDialog}
               fetchItems={fetchItems}
               key={item.id}
             />
