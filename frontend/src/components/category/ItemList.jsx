@@ -2,10 +2,15 @@ import React, { useEffect, useState } from "react";
 import { Container, Row } from "react-bootstrap";
 import EditItem from "./EditItem";
 import Item from "./Item";
+import CreateItem from "./CreateItem";
 
 const ItemList = ({ id, currentUser, shoppingCart, setShoppingCart }) => {
   const categoryId = id;
   const [items, setItems] = useState([]);
+  const [CreateDialog, setCreateDialog] = useState({
+    isShowing: false,
+    item: { name: "", description: "", price: "" },
+  });
   const [editDialog, setEditDialog] = useState({
     isShowing: false,
     item: { name: "", description: "", price: "" },
@@ -33,6 +38,7 @@ const ItemList = ({ id, currentUser, shoppingCart, setShoppingCart }) => {
               shoppingCart={shoppingCart}
               setShoppingCart={setShoppingCart}
               setEditDialog={setEditDialog}
+              setCreateDialog={setCreateDialog}
               fetchItems={fetchItems}
               key={item.id}
             />
@@ -43,6 +49,11 @@ const ItemList = ({ id, currentUser, shoppingCart, setShoppingCart }) => {
             setEditDialog={setEditDialog}
             fetchItems={fetchItems}
           />
+          <CreateItem
+            CreateDialog={CreateDialog}
+            setCreateDialog={setCreateDialog}
+            fetchItems={fetchItems}
+          ></CreateItem>
         </Row>
       </Container>
     </div>
