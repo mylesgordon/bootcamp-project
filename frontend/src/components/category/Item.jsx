@@ -1,12 +1,5 @@
 import React from "react";
-import {
-  Button,
-  Card,
-  Col,
-  Row,
-  ListGroup,
-  ListGroupItem,
-} from "react-bootstrap";
+import { Button, Card, Col, ListGroup, ListGroupItem } from "react-bootstrap";
 
 const Item = ({
   item,
