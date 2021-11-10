@@ -1,25 +1,25 @@
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
-const CreateItem = ({ CreateDialog, setCreateDialog, fetchItems }) => {
-  const [createdItem, setCreatedItem] = useState("");
-
-  useEffect(() => {
-    setCreatedItem("");
-  }, [CreateDialog]);
+const CreateItem = ({ showCreateDialog, setShowCreateDialog, fetchItems }) => {
+  const [itemCategory, setItemCategory] = useState("");
+  const [createdItem, setCreatedItem] = useState({
+    name: "",
+    description: "",
+    price: "",
+    image: "",
+  });
 
   const hideCreateDialog = () => {
+    setShowCreateDialog(false);
     fetchItems();
-    setCreateDialog({
-      isShowing: false,
-      item: { name: "", description: "", price: "" },
-    });
   };
 
   const adminCreateItem = async () => {
-    await fetch("http://localhost:3002/api/items", {
+    console.log(createdItem);
+    await fetch(`http://localhost:3002/api/categories/${itemCategory}/items`, {
       method: "POST",
       body: JSON.stringify(createdItem),
       headers: {
@@ -31,7 +31,7 @@ const CreateItem = ({ CreateDialog, setCreateDialog, fetchItems }) => {
   };
 
   return (
-    <Modal show={CreateDialog.isShowing} onHide={hideCreateDialog}>
+    <Modal show={showCreateDialog} onHide={hideCreateDialog}>
       <Modal.Header closeButton>
         <Modal.Title>Create Item</Modal.Title>
       </Modal.Header>
@@ -41,7 +41,7 @@ const CreateItem = ({ CreateDialog, setCreateDialog, fetchItems }) => {
           <Form.Group className="mb-3" controlId="itemName">
             <Form.Label>Name:</Form.Label>
             <Form.Control
-              value=""
+              value={createdItem.name}
               onChange={(val) =>
                 setCreatedItem({ ...createdItem, name: val.target.value })
               }
@@ -50,7 +50,7 @@ const CreateItem = ({ CreateDialog, setCreateDialog, fetchItems }) => {
           <Form.Group className="mb-3" controlId="itemDescription">
             <Form.Label>Description:</Form.Label>
             <Form.Control
-              value=""
+              value={createdItem.description}
               onChange={(val) =>
                 setCreatedItem({
                   ...createdItem,
@@ -62,13 +62,32 @@ const CreateItem = ({ CreateDialog, setCreateDialog, fetchItems }) => {
           <Form.Group className="mb-3" controlId="itemPrice">
             <Form.Label>Price:</Form.Label>
             <Form.Control
-              value=""
+              value={createdItem.price}
               onChange={(val) =>
                 setCreatedItem({
                   ...createdItem,
                   price: val.target.value,
                 })
               }
+            />
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="itemImage">
+            <Form.Label>Image</Form.Label>
+            <Form.Control
+              value={createdItem.image}
+              onChange={(val) =>
+                setCreatedItem({
+                  ...createdItem,
+                  image: val.target.value,
+                })
+              }
+            />
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="itemCategory">
+            <Form.Label>Category Number:</Form.Label>
+            <Form.Control
+              value={itemCategory}
+              onChange={(val) => setItemCategory(val.target.value)}
             />
           </Form.Group>
         </Form>

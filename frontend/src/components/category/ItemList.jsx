@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Container, Row } from "react-bootstrap";
+import { Button, Container, Row } from "react-bootstrap";
 import EditItem from "./EditItem";
 import Item from "./Item";
 import CreateItem from "./CreateItem";
@@ -7,14 +7,24 @@ import CreateItem from "./CreateItem";
 const ItemList = ({ id, currentUser, shoppingCart, setShoppingCart }) => {
   const categoryId = id;
   const [items, setItems] = useState([]);
-  const [CreateDialog, setCreateDialog] = useState({
-    isShowing: false,
-    item: { name: "", description: "", price: "" },
-  });
+
+  const [showCreateDialog, setShowCreateDialog] = useState(false);
   const [editDialog, setEditDialog] = useState({
     isShowing: false,
     item: { name: "", description: "", price: "" },
   });
+
+  const adminCreateButton = () => {
+    if (currentUser.user.id === 1) {
+      return (
+        <Button variant="success" onClick={() => setShowCreateDialog(true)}>
+          Create Item
+        </Button>
+      );
+    } else {
+      return <></>;
+    }
+  };
 
   const fetchItems = async () => {
     const items = await fetch(
@@ -31,14 +41,13 @@ const ItemList = ({ id, currentUser, shoppingCart, setShoppingCart }) => {
     <div>
       <Container>
         <Row>
+          {adminCreateButton()}
           {items.map((item) => (
             <Item
               item={item}
               currentUser={currentUser}
               shoppingCart={shoppingCart}
               setShoppingCart={setShoppingCart}
-              setEditDialog={setEditDialog}
-              setCreateDialog={setCreateDialog}
               fetchItems={fetchItems}
               key={item.id}
             />
@@ -50,8 +59,8 @@ const ItemList = ({ id, currentUser, shoppingCart, setShoppingCart }) => {
             fetchItems={fetchItems}
           />
           <CreateItem
-            CreateDialog={CreateDialog}
-            setCreateDialog={setCreateDialog}
+            showCreateDialog={showCreateDialog}
+            setShowCreateDialog={setShowCreateDialog}
             fetchItems={fetchItems}
           ></CreateItem>
         </Row>
