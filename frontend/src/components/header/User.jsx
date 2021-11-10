@@ -19,15 +19,16 @@ const User = ({
     return (
       <>
         <h3>{currentUser.user.email}</h3>
-
-        <Button
-          variant="info"
-          onClick={() => {
-            setShowCart(true);
-          }}
-        >
-          Cart
-        </Button>
+        <div class="cartButton">
+          <Button
+            variant="info"
+            onClick={() => {
+              setShowCart(true);
+            }}
+          >
+            Cart
+          </Button>
+        </div>
 
         <Cart
           showCart={showCart}
@@ -41,7 +42,7 @@ const User = ({
     return (
       <>
         <Button variant="danger" onClick={showDialog}>
-          Sign Up
+          Sign Up/Log in
         </Button>
 
         <RegisterDialog
