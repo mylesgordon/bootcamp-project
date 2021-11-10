@@ -30,17 +30,23 @@ const Item = ({
     if (currentUser.user.id === 1) {
       return (
         <div>
-          <Button variant="danger" onClick={adminDeleteItem}>
-            Delete Item
-          </Button>
-          <Button
-            variant="info"
-            onClick={() => {
-              setEditDialog({ isShowing: true, item: currentItem });
-            }}
-          >
-            Edit Item
-          </Button>
+          <div class="buttonClass">
+            <div class="buttonClass">
+              <Button variant="danger" onClick={adminDeleteItem}>
+                Delete Item
+              </Button>
+            </div>
+            <div class="buttonClass">
+              <Button
+                variant="info"
+                onClick={() => {
+                  setEditDialog({ isShowing: true, item: currentItem });
+                }}
+              >
+                Edit Item
+              </Button>
+            </div>
+          </div>
         </div>
       );
     } else {
