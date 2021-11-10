@@ -6,15 +6,14 @@ const ItemList = ({ id, currentUser, shoppingCart, setShoppingCart }) => {
   const categoryId = id;
   const [items, setItems] = useState([]);
 
-  useEffect(() => {
-    console.log(categoryId);
-    const fetchItems = async () => {
-      const items = await fetch(
-        `http://localhost:3002/api/categories/${categoryId}`
-      );
-      setItems(await items.json());
-    };
+  const fetchItems = async () => {
+    const items = await fetch(
+      `http://localhost:3002/api/categories/${categoryId}`
+    );
+    setItems(await items.json());
+  };
 
+  useEffect(() => {
     fetchItems();
   }, [categoryId]);
 
@@ -28,6 +27,7 @@ const ItemList = ({ id, currentUser, shoppingCart, setShoppingCart }) => {
               currentUser={currentUser}
               shoppingCart={shoppingCart}
               setShoppingCart={setShoppingCart}
+              fetchItems={fetchItems}
               key={item.id}
             />
           ))}

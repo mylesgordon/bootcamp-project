@@ -8,7 +8,15 @@ import {
   ListGroupItem,
 } from "react-bootstrap";
 
-const Item = ({ item, currentUser, shoppingCart, setShoppingCart }) => {
+const Item = ({
+  item,
+  currentUser,
+  shoppingCart,
+  setShoppingCart,
+  fetchItems,
+}) => {
+  const itemId = item.id;
+
   const addToCart = () => {
     if (currentUser.isLoggedIn) {
       setShoppingCart([...shoppingCart, item]);
@@ -17,9 +25,20 @@ const Item = ({ item, currentUser, shoppingCart, setShoppingCart }) => {
     }
   };
 
+  const adminDeleteItem = async () => {
+    await fetch(`http://localhost:3002/api/items/${itemId}`, {
+      method: "DELETE",
+    });
+    fetchItems();
+  };
+
   const adminDeleteButton = () => {
     if (currentUser.user.id === 1) {
-      return <Button variant="danger">Delete Item</Button>;
+      return (
+        <Button variant="danger" onClick={adminDeleteItem}>
+          Delete Item
+        </Button>
+      );
     } else {
       return <></>;
     }
