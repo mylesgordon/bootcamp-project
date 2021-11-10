@@ -1,14 +1,22 @@
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
-const EditItem = ({ item, showEditDialog, setShowEditDialog, fetchItems }) => {
-  const [updatedItem, setUpdatedItem] = useState(item);
+const EditItem = ({ editDialog, setEditDialog, fetchItems }) => {
+  console.log(editDialog.item);
+  const [updatedItem, setUpdatedItem] = useState(editDialog.item);
+
+  useEffect(() => {
+    setUpdatedItem(editDialog.item);
+  }, [editDialog]);
 
   const hideEditDialog = () => {
     fetchItems();
-    setShowEditDialog(false);
+    setEditDialog({
+      isShowing: false,
+      item: { name: "", description: "", price: "" },
+    });
   };
 
   const saveEditedItem = async () => {
@@ -24,7 +32,7 @@ const EditItem = ({ item, showEditDialog, setShowEditDialog, fetchItems }) => {
   };
 
   return (
-    <Modal show={showEditDialog} onHide={hideEditDialog}>
+    <Modal show={editDialog.isShowing} onHide={hideEditDialog}>
       <Modal.Header closeButton>
         <Modal.Title>Edit Item</Modal.Title>
       </Modal.Header>

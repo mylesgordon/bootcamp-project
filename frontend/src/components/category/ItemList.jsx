@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { Container, Row } from "react-bootstrap";
+import EditItem from "./EditItem";
 import Item from "./Item";
 
 const ItemList = ({ id, currentUser, shoppingCart, setShoppingCart }) => {
   const categoryId = id;
   const [items, setItems] = useState([]);
-  const [showEditDialog, setShowEditDialog] = useState(false);
+  const [editDialog, setEditDialog] = useState({
+    isShowing: false,
+    item: { name: "", description: "", price: "" },
+  });
 
   const fetchItems = async () => {
     const items = await fetch(
@@ -28,12 +32,17 @@ const ItemList = ({ id, currentUser, shoppingCart, setShoppingCart }) => {
               currentUser={currentUser}
               shoppingCart={shoppingCart}
               setShoppingCart={setShoppingCart}
-              showEditDialog={showEditDialog}
-              setShowEditDialog={setShowEditDialog}
+              setEditDialog={setEditDialog}
               fetchItems={fetchItems}
               key={item.id}
             />
           ))}
+
+          <EditItem
+            editDialog={editDialog}
+            setEditDialog={setEditDialog}
+            fetchItems={fetchItems}
+          />
         </Row>
       </Container>
     </div>

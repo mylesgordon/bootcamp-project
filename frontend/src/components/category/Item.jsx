@@ -7,18 +7,16 @@ import {
   ListGroup,
   ListGroupItem,
 } from "react-bootstrap";
-import EditItem from "./EditItem";
 
 const Item = ({
   item,
   currentUser,
   shoppingCart,
   setShoppingCart,
-  showEditDialog,
-  setShowEditDialog,
+  setEditDialog,
   fetchItems,
 }) => {
-  const itemId = item.id;
+  const currentItem = item;
 
   const addToCart = () => {
     if (currentUser.isLoggedIn) {
@@ -29,7 +27,7 @@ const Item = ({
   };
 
   const adminDeleteItem = async () => {
-    await fetch(`http://localhost:3002/api/items/${itemId}`, {
+    await fetch(`http://localhost:3002/api/items/${currentItem.id}`, {
       method: "DELETE",
     });
     fetchItems();
@@ -45,18 +43,11 @@ const Item = ({
           <Button
             variant="info"
             onClick={() => {
-              setShowEditDialog(true);
+              setEditDialog({ isShowing: true, item: currentItem });
             }}
           >
             Edit Item
           </Button>
-
-          <EditItem
-            item={item}
-            showEditDialog={showEditDialog}
-            setShowEditDialog={setShowEditDialog}
-            fetchItems={fetchItems}
-          />
         </div>
       );
     } else {
