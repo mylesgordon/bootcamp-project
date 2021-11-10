@@ -14,6 +14,7 @@ const Item = ({
   shoppingCart,
   setShoppingCart,
   setEditDialog,
+  setCreateDialog,
   fetchItems,
 }) => {
   const currentItem = item;
@@ -47,6 +48,14 @@ const Item = ({
             }}
           >
             Edit Item
+          </Button>
+          <Button
+            variant="success"
+            onClick={() => {
+              setCreateDialog({ isShowing: true, item: currentItem });
+            }}
+          >
+            New Item
           </Button>
         </div>
       );
