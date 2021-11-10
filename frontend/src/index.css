@@ -19,3 +19,41 @@ code {
   width: auto;
   max-width: 150px;
 }
+
+.adminCreate {
+  padding: 20px;
+}
+
+html {
+  --scrollbarBG: rgb(255, 255, 255);
+  --thumbBG: rgb(153, 0, 255);
+}
+
+body::-webkit-scrollbar {
+  width: 10px;
+}
+
+body {
+  scrollbar-width: 20px;
+  scrollbar-color: var(--thumbBG) var(--scrollbarBG);
+}
+
+body::-webkit-scrollbar-track {
+  background: var(--scrollbarBG);
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: var(--thumbBG);
+  border-radius: 6px;
+  border: 3px solid var(--scrollbarBG);
+}
+
+.buttonClass {
+  padding: 10px;
+  text-align: center;
+  display: flex;
+}
+
+.cartButton {
+  padding-left: 10px;
+}
