@@ -115,7 +115,7 @@ app //creating the PUT method for updating an item in the items database.
           id: req.params.id,
         },
       });
-      res.status(200).send();
+      res.status(200).send(item);
     } catch (e) {
       res.status(400).send(e.message);
     }

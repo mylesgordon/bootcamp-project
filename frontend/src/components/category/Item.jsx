@@ -11,9 +11,23 @@ const Item = ({
 }) => {
   const currentItem = item;
 
-  const addToCart = () => {
+  const addCartItem = async (item) =>
+    fetch("http://localhost:3002/api/cart/updatecart", {
+      method: "POST",
+      body: `{"UserId": "${currentUser.user.id}", "ItemId": "${item.id}"}`,
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+  const addToCart = async () => {
     if (currentUser.isLoggedIn) {
-      setShoppingCart([...shoppingCart, item]);
+      try {
+        await addCartItem(item);
+        setShoppingCart([...shoppingCart, item]);
+      } catch (error) {
+        console.log(error);
+      }
     } else {
       alert("You need to be logged in to add this item to your cart");
     }

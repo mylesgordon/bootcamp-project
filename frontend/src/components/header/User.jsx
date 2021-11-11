@@ -19,7 +19,7 @@ const User = ({
     return (
       <>
         <h3>{currentUser.user.email}</h3>
-        <div class="cartButton">
+        <div className="cartButton">
           <Button
             variant="info"
             onClick={() => {
@@ -31,6 +31,7 @@ const User = ({
         </div>
 
         <Cart
+          currentUser={currentUser}
           showCart={showCart}
           setShowCart={setShowCart}
           shoppingCart={shoppingCart}
