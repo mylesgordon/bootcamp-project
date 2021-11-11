@@ -58,6 +58,14 @@ const Cart = ({
     }
   };
 
+  const calculateSubtotal = () => {
+    let subtotal = 0;
+    for (let i = 0; i < cartServerInstance.length; i++) {
+      subtotal += cartServerInstance[i].price;
+    }
+    return subtotal.toFixed(2);
+  };
+
   return (
     <OffCanvas
       show={showCart}
@@ -69,7 +77,6 @@ const Cart = ({
       </OffCanvas.Header>
 
       <OffCanvas.Body>
-        {console.log(cartServerInstance)}
         {cartServerInstance.map((item) => (
           <CartItem
             key={item.cartID}
@@ -77,6 +84,10 @@ const Cart = ({
             deleteItemFromCart={deleteItemFromCart}
           />
         ))}
+
+        <div id="cartSubtotal">
+          <h4>Subtotal: £{calculateSubtotal()}</h4>
+        </div>
       </OffCanvas.Body>
     </OffCanvas>
   );
