@@ -159,7 +159,7 @@ app
   })
   .delete("/api/cart/:cart_id", async (req, res) => {
     try {
-      await Cart.destroy({
+      await CartItem.destroy({
         where: {
           id: req.params.cart_id,
         },

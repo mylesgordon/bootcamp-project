@@ -1,6 +1,7 @@
 import OffCanvas from "react-bootstrap/Offcanvas";
 import Button from "react-bootstrap/Button";
 import React, { useEffect, useState } from "react";
+import CartItem from "./CartItem";
 
 const Cart = ({
   currentUser,
@@ -41,6 +42,22 @@ const Cart = ({
     // eslint-disable-next-line
   }, [shoppingCart]);
 
+  const deleteItemFromCart = async (cartID) => {
+    try {
+      const test = await fetch(`http://localhost:3002/api/cart/${cartID}`, {
+        method: "DELETE",
+      });
+
+      setShoppingCart(
+        shoppingCart.filter((cartItem) => {
+          return cartItem.cartID !== cartID;
+        })
+      );
+    } catch (error) {
+      alert(error);
+    }
+  };
+
   return (
     <OffCanvas
       show={showCart}
@@ -52,15 +69,13 @@ const Cart = ({
       </OffCanvas.Header>
 
       <OffCanvas.Body>
+        {console.log(cartServerInstance)}
         {cartServerInstance.map((item) => (
-          <div key={item.cartID}>
-            <h5>{item.name}</h5>&nbsp;£{item.price}
-            <span className="cartButton">
-              <Button variant="danger" onClick={console.log("click")}>
-                Delete item
-              </Button>
-            </span>
-          </div>
+          <CartItem
+            key={item.cartID}
+            item={item}
+            deleteItemFromCart={deleteItemFromCart}
+          />
         ))}
       </OffCanvas.Body>
     </OffCanvas>
