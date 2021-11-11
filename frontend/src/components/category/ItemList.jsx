@@ -39,9 +39,9 @@ const ItemList = ({ id, currentUser, shoppingCart, setShoppingCart }) => {
 
   return (
     <div>
-      <Container class="container">
+      <Container className="container">
         <Row>
-          <div class="adminCreate">{adminCreateButton()}</div>
+          <div className="adminCreate">{adminCreateButton()}</div>
 
           {items.map((item) => (
             <Item

@@ -30,6 +30,7 @@ const Cart = ({
       let items = [];
       for (let i = 0; i < cartIds.length; i++) {
         const item = await fetchItemFromId(cartIds[i].ItemId);
+        item.cartID = cartIds[i].id;
         items.push(item);
       }
 
@@ -52,7 +53,7 @@ const Cart = ({
 
       <OffCanvas.Body>
         {cartServerInstance.map((item) => (
-          <div key={item.id}>
+          <div key={item.cartID}>
             <h5>{item.name}</h5>&nbsp;£{item.price}
             <span className="cartButton">
               <Button variant="danger" onClick={console.log("click")}>

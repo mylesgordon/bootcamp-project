@@ -157,12 +157,11 @@ app
       res.status(400).send(e.message);
     }
   })
-  .delete("/api/cart/:user_id/items/:item_id", async (req, res) => {
+  .delete("/api/cart/:cart_id", async (req, res) => {
     try {
       await Cart.destroy({
         where: {
-          ItemId: req.params.item_id,
-          UserId: req.params.user_id,
+          id: req.params.cart_id,
         },
       });
 
