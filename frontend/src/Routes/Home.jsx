@@ -2,7 +2,7 @@ import React from "react";
 
 const Home = () => {
   return (
-    <marquee behaviour="alternate" scrolldelay="60" className="homeText">
+    <marquee behaviour="alternate" scrollamount="20" className="homeText">
       <img
         className="homeImage rounded-circle"
         src="/Harold.jpg"
