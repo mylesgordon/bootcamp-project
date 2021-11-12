@@ -9,7 +9,7 @@ const userModel = {
         msg: "Please enter a valid email name.",
       },
     },
-    unique: true,
+    //unique: true,
   },
   password: {
     type: Sequelize.STRING,

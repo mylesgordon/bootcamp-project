@@ -20,8 +20,8 @@ app
   //Creating the POST method for adding a category to our Categories database.
   .post("/api/categories", async (req, res) => {
     try {
-      await Category.create(req.body);
-      res.status(201).send();
+      const category = await Category.create(req.body);
+      res.status(201).send(category);
     } catch (e) {
       res.status(400).send(e.message);
     }
@@ -139,8 +139,8 @@ app //creating the PUT method for updating an item in the items database.
 app
   .post("/api/cart/updatecart", async (req, res) => {
     try {
-      await CartItem.create(req.body);
-      res.status(201).send();
+      const cartitem = await CartItem.create(req.body);
+      res.status(201).send(cartitem);
     } catch (e) {
       res.status(400).send(e.message);
     }
@@ -175,8 +175,8 @@ app
 app //creating the POST method for creating a new User and adding them to the users database.
   .post("/api/users", async (req, res) => {
     try {
-      await User.create(req.body);
-      res.status(201).send();
+      const user = await User.create(req.body);
+      res.status(201).send(user);
     } catch (e) {
       res.status(400).send(e.message);
     }
@@ -191,6 +191,7 @@ app //creating the POST method for creating a new User and adding them to the us
       });
       res.status(200).send(user);
     } catch (e) {
+      console.log(e.message)
       res.status(400).send(e.message);
     }
   })
