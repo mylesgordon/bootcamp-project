@@ -13,7 +13,7 @@ const RegisterForm = ({
         <Form.Label>Email address:</Form.Label>
         <Form.Control
           type="email"
-          placeholder="niko.avocado@something.com"
+          placeholder="jane.doe@gmail.com"
           value={formEmail}
           onChange={(val) => setFormEmail(val.target.value)}
         />
