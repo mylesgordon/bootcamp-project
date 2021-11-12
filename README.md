@@ -25,9 +25,9 @@ To run the API, set your terminal's directory to the API folder and install depe
 
 `npm install`
 
-Once installed, you can run with either npm or nodemon. Example below shows running with nodemon:
+Now, you should just be able to run the API with nodemon as the runner with the following command!
 
-`npx nodemon index.js`
+`npm start`
 
 The API should now be running on `http://localhost:3002`!
 
